@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { Component } from 'react';
 
-const Search = props => {
-  return (
-    <div className="ui search">
-      <div className="ui icon input">
-        <input className="prompt" onChange={props.onChange} />
-        <i className="search icon" />
+export class Search extends Component {
+  render() {
+    return (
+      <div className="ui search">
+        <div className="ui icon input">
+          <input className="prompt" onChange={this.props.onChange} />
+          <i className="search icon" />
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
 
-export default Search
+export default Search;
