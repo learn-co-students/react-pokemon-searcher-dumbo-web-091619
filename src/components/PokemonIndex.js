@@ -5,16 +5,34 @@ import Search from './Search'
 import { Container } from 'semantic-ui-react'
 
 class PokemonPage extends React.Component {
+  constructor(){
+    super()
+    this.state = {
+      search: "",
+      newPoke: {}
+    }
+  }
+
+  indicate = (poke) => {
+    this.setState({
+      newPoke: poke
+    })
+  }
+
+  handleSearch = (text) => {
+    this.setState({search: text.currentTarget.value})
+  }
+
   render() {
     return (
       <Container>
         <h1>Pokemon Searcher</h1>
         <br />
-        <PokemonForm />
+        <PokemonForm indicate={this.indicate}/>
         <br />
-        <Search onChange={() => console.log('🤔')} />
+        <Search onChange={(text) => this.handleSearch(text)} />
         <br />
-        <PokemonCollection />
+        <PokemonCollection search={this.state.search} newPoke={this.state.newPoke}/>
       </Container>
     )
   }
