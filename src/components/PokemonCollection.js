@@ -9,10 +9,12 @@ class PokemonCollection extends React.Component {
       <PokemonCard key={digimon.id} pokemon={digimon} />)
 
     return (
-      <Card.Group itemsPerRow={6}>
+      <div>
         <h1>Hello From Pokemon Collection</h1>
-        {transformedArray}
-      </Card.Group>
+        <Card.Group itemsPerRow={6}>
+          {transformedArray}
+        </Card.Group>
+      </div>
     )
   }
 }

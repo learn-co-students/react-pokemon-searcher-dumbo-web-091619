@@ -52,14 +52,9 @@ class PokemonPage extends React.Component {
     })
   }
 
-  onChange = (event) => {
-    this.filterPokemon(event.target.value)
-  }
-
-  filterPokemon = (input) => {
-    console.log(input)
+  filterPokemon = (event) => {
     this.setState({
-      displayPoke: this.state.pokemon.filter((poke) => poke.name.includes(input))
+      displayPoke: this.state.pokemon.filter((poke) => poke.name.includes(event.target.value))
     })
   }
 
@@ -70,7 +65,7 @@ class PokemonPage extends React.Component {
         <br />
         <PokemonForm addPokemon={this.addPokemon} />
         <br />
-        <Search onChange={this.onChange} />
+        <Search onChange={this.filterPokemon} />
         <br />
         <PokemonCollection allPokemon={this.state.displayPoke} />
       </Container>
