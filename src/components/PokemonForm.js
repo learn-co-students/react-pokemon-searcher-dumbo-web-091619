@@ -8,8 +8,8 @@ class PokemonForm extends React.Component {
     this.state = {
       name: '',
       hp: '',
-      frontUrl: '',
-      backUrl: ''
+      front: '',
+      back: ''
     }
     
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -24,7 +24,7 @@ class PokemonForm extends React.Component {
               name: this.state.name,
               stats: [
                 {value: this.state.hp, name: 'hp'}],
-              sprites: {frontUrl: this.state.frontUrl, backUrl: this.state.backUrl}
+              sprites: {front: this.state.front, back: this.state.back}
             }
 console.log(this.state.hp)
     this.props.addNewPokemon(newPokemon)
@@ -54,8 +54,8 @@ console.log(this.state.hp)
           <Form.Group widths="equal">
             <Form.Input fluid label="Name" onChange={this.onChange} value={this.state.name} placeholder="Name" name="name" />
             <Form.Input fluid label="hp" onChange={this.onChange} value={this.state.hp} placeholder="hp" name="hp" />
-            <Form.Input fluid label="Front Image URL" onChange={this.onChange} value={this.state.frontUrl} placeholder="url" name="frontUrl" />
-            <Form.Input fluid label="Back Image URL" onChange={this.onChange} value={this.state.backUrl} placeholder="url" name="backUrl" />
+            <Form.Input fluid label="Front Image URL" onChange={this.onChange} value={this.state.front} placeholder="url" name="front" />
+            <Form.Input fluid label="Back Image URL" onChange={this.onChange} value={this.state.back} placeholder="url" name="back" />
           </Form.Group>
           <Form.Button>Submit</Form.Button>
         </Form>

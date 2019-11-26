@@ -7446,6 +7446,34 @@
         "backUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
       },
       "id": 215
+    },
+    {
+      "name": "Chinomnso",
+      "stats": [
+        {
+          "value": "34",
+          "name": "hp"
+        }
+      ],
+      "sprites": {
+        "frontUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
+        "backUrl": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
+      },
+      "id": 216
+    },
+    {
+      "name": "dsdfds",
+      "stats": [
+        {
+          "value": "34",
+          "name": "hp"
+        }
+      ],
+      "sprites": {
+        "front": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png",
+        "back": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/146.png"
+      },
+      "id": 217
     }
   ]
 }
