@@ -5,16 +5,46 @@ import Search from './Search'
 import { Container } from 'semantic-ui-react'
 
 class PokemonPage extends React.Component {
+  state = {
+    pokemons: [],
+    searchParams: ""
+  }
+
+  componentDidMount(){
+    fetch("http://localhost:3000/pokemon")
+    .then(r => r.json())
+    .then(pokeObj => {
+      this.setState({
+        pokemons: pokeObj
+      })
+    })
+  }
+
+  handleChange = (event) => {
+    this.setState({
+      searchParams: event.target.value
+    }, this.searchPokemons)
+  }
+
+  addNewPokemon = (pokemon) => {
+    this.setState({
+      pokemons: [...this.state.pokemons, pokemon]
+    })
+  }
+
   render() {
+    const desiredPokemon = this.state.pokemons.filter((pokemon) => {
+      return pokemon.name.includes(this.state.searchParams)
+    })
     return (
       <Container>
         <h1>Pokemon Searcher</h1>
         <br />
-        <PokemonForm />
+        <PokemonForm addNewPokemon={this.addNewPokemon}/>
         <br />
-        <Search onChange={() => console.log('🤔')} />
+        <Search searchParams={this.state.searchParams} onChange={this.handleChange} />
         <br />
-        <PokemonCollection />
+        <PokemonCollection pokemons={desiredPokemon} foundPokemon={this.state.foundPokemon}/>
       </Container>
     )
   }
