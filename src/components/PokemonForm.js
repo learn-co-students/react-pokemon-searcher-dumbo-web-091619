@@ -5,13 +5,42 @@ class PokemonForm extends React.Component {
   constructor() {
     super()
 
-    this.state = {
-      name: '',
-      hp: '',
-      frontUrl: '',
-      backUrl: ''
-    }
+    this.state = this.getInitialState()
   }
+
+  getInitialState = () => ({ name: '', hp: '', frontUrl: '', backUrl: '' })
+
+  handleChange = (e, { name, value }) => this.setState({ [name]: value })
+
+  handleSubmit = e => {
+    e.preventDefault()
+    const { name, hp, frontUrl, backUrl } = this.state
+    fetch('http://localhost:3000/pokemon', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json'
+      },
+      body: JSON.stringify({
+        name,
+        stats: [
+          {
+            value: hp,
+            name: 'hp'
+          }
+        ],
+        sprites: {
+          front: frontUrl,
+          back: backUrl
+        }
+      })
+    })
+      .then(resp => resp.json())
+      .then(pokemon => this.props.addPokemon(pokemon))
+      .catch(error => console.error(error))
+    this.setState(this.getInitialState())
+  }
+
 
   render() {
     return (
